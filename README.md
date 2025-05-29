@@ -1,6 +1,8 @@
 # Odoo 18 Time Picker Widget
 
-A time picker component specifically designed for Odoo 18, developed using the OWL 2 framework, allowing users to conveniently select time (hours, minutes, seconds) in the interface.
+[简体中文](README.zh-CN.md)
+
+A time picker component specifically designed for Odoo, developed using the OWL 2 framework, allowing users to conveniently select time (hours, minutes, seconds) in the interface.
 
 ## Features
 
