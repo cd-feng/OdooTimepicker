@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoo 18 Time Picker Widget</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .badge {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-right: 10px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.8em;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #667eea;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .checkmark {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .install-steps {
+            background: #d1ecf1;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .step {
+            margin: 15px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #bee5eb;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            background: #17a2b8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .demo-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            display: block;
+        }
+
+        .cta-section {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🕐 Odoo 18 Time Picker Widget</h1>
+        <p class="subtitle">A professional time picker component designed specifically for Odoo 18, built with OWL 2 framework</p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-title">✅ OWL 2 Compatible</div>
+                <p>Built on the modern OWL 2 framework for optimal performance and compatibility with Odoo 18</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">✅ Click to Select</div>
+                <p>Click anywhere on the input field to instantly open the time picker - no need to hunt for small icons</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">✅ Clean Design</div>
+                <p>Hides the browser's default clock icon for a minimal, professional interface that matches Odoo's design</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">✅ Char Field Support</div>
+                <p>Stores time as string format (HH:MM:SS) in your database with full precision</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">✅ Responsive Design</div>
+                <p>Automatically adapts to different screen sizes and devices, including mobile-optimized native pickers</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">✅ Cross-browser Compatible</div>
+                <p>Works seamlessly across all major modern browsers including Chrome, Firefox, Safari, and Edge</p>
+            </div>
+        </div>
+
+        <h2>📖 How to Use</h2>
+
+        <div class="install-steps">
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Define Fields in Your Model</strong>
+            </div>
+            <div class="code-block">
+                <code>class YourModel(models.Model):<br>
+    _name = 'your.model'<br><br>
+    work_time = fields.Char(string='Work Time', help='Format: HH:MM:SS')<br>
+    start_time = fields.Char(string='Start Time')<br>
+    end_time = fields.Char(string='End Time')</code>
+            </div>
+        </div>
+
+        <div class="install-steps">
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Use in Your Views</strong>
+            </div>
+            <div class="code-block">
+                <code>&lt;!-- Form View --&gt;<br>
+&lt;field name="work_time" widget="time_picker"/&gt;<br>
+&lt;field name="start_time" widget="time_picker" placeholder="Select start time"/&gt;<br><br>
+&lt;!-- List View --&gt;<br>
+&lt;field name="work_time" widget="time_picker"/&gt;<br>
+&lt;field name="start_time" widget="time_picker"/&gt;</code>
+            </div>
+        </div>
+
+        <h2>⚙️ Available Attributes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>widget</code></td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>Must be set to <code>"time_picker"</code></td>
+                </tr>
+                <tr>
+                    <td><code>placeholder</code></td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>Input field placeholder text</td>
+                </tr>
+                <tr>
+                    <td><code>readonly</code></td>
+                    <td>boolean</td>
+                    <td>false</td>
+                    <td>Whether the field is in readonly mode</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>💾 Data Format</h2>
+        <div class="feature-card">
+            <p><strong>Storage Format:</strong> String (HH:MM:SS)</p>
+            <p><strong>Example Values:</strong> <code>"09:30:00"</code>, <code>"14:15:30"</code>, <code>"23:59:59"</code></p>
+            <p><strong>Empty Value Handling:</strong> Empty string or <code>False</code></p>
+        </div>
+
+        <h2>🌐 Browser Compatibility</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Browser</th>
+                    <th>Version</th>
+                    <th>Support Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Chrome</td>
+                    <td>20+</td>
+                    <td><span class="checkmark">✅ Fully Supported</span></td>
+                </tr>
+                <tr>
+                    <td>Firefox</td>
+                    <td>57+</td>
+                    <td><span class="checkmark">✅ Fully Supported</span></td>
+                </tr>
+                <tr>
+                    <td>Safari</td>
+                    <td>14.1+</td>
+                    <td><span class="checkmark">✅ Fully Supported</span></td>
+                </tr>
+                <tr>
+                    <td>Edge</td>
+                    <td>79+</td>
+                    <td><span class="checkmark">✅ Fully Supported</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>⚠️ Important Notes</h2>
+        <div class="warning-box">
+            <div class="warning-title">Requirements & Best Practices</div>
+            <ul>
+                <li><strong>Field Type:</strong> Must use <code>fields.Char</code> field type</li>
+                <li><strong>Time Format:</strong> Component automatically handles HH:MM:SS format</li>
+                <li><strong>Mobile Devices:</strong> Displays native time picker on mobile devices for better UX</li>
+                <li><strong>Performance:</strong> Component is optimized for use in large lists and forms</li>
+            </ul>
+        </div>
+
+        <h2>🚀 Why Choose This Widget?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-title">🎯 User-Friendly</div>
+                <p>Intuitive interface that makes time selection effortless for your users</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">🛠️ Developer-Friendly</div>
+                <p>Easy to implement with minimal configuration required</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">📱 Mobile-Ready</div>
+                <p>Automatically adapts to mobile devices with native time pickers</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">🎨 Consistent Design</div>
+                <p>Matches Odoo's native design language perfectly</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+.o_field_time_picker {
+    width: 100%;
+}
+
+.o_time_input {
+    border: none;
+    background: none;
+}
+
+.o_time_input:focus {
+    outline: none;
+}
+
+/* 完全隐藏默认的时间图标 */
+.o_field_time_picker input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.o_field_time_picker input[type="time"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.o_field_time_picker input[type="time"]::-webkit-clear-button {
+    display: none;
+}
