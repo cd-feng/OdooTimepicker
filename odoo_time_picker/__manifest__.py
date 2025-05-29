@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Odoo Time Picker",
+    'name': "Odoo TimePicker",
     'summary': """ Supports Char fields to be displayed as time """,
     'description': """ """,
     'author': "XueFeng.Su",
     'website': "https://github.com/cd-feng",
-    'category': 'Tools/TimePicker',
+    'category': 'Tools/timepicker',
     'version': '0.1',
     'depends': ['base'],
     "license": "AGPL-3",
