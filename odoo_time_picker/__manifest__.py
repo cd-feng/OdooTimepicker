@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Odoo TimePicker",
+    'name': "Odoo Time Picker",
     'summary': """ Supports Char fields to be displayed as time """,
     'description': """ """,
     'author': "XueFeng.Su",
@@ -16,9 +16,9 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'odoo_timepicker/static/xml/*.xml',
-            'odoo_timepicker/static/src/js/*.js',
-            'odoo_timepicker/static/src/css/*',
+            'odoo_time_picker/static/xml/*.xml',
+            'odoo_time_picker/static/src/js/*.js',
+            'odoo_time_picker/static/src/css/*',
         ],
     },
 }

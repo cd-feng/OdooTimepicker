@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
 
-    <t t-name="odoo_datetime_picker.Time">
+    <t t-name="OdooTimePicker.Template">
         <div class="o_field_widget o_field_time_picker" t-on-click="onIconClick">
             <input type="time"
                    class="o_data_cell cursor-pointer o_field_cell o_list_char o_time_input"

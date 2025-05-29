@@ -4,7 +4,7 @@ import { registry } from "@web/core/registry";
 import { useInputField } from "@web/views/fields/input_field_hook";
 
 export class TimePicker extends Component {
-    static template = "odoo_datetime_picker.Time";
+    static template = "OdooTimePicker.Template";
     static props = {
         ...Component.props,
         record: Object,
