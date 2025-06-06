@@ -6,10 +6,14 @@ import { useInputField } from "@web/views/fields/input_field_hook";
 export class TimePicker extends Component {
     static template = "OdooTimePicker.Template";
     static props = {
-        ...Component.props,
         record: Object,
-        readonly: Boolean,
-        options: Object,
+        name: String,
+        readonly: { type: Boolean, optional: true },
+        options: { type: Object, optional: true },
+        value: { type: [String, Boolean], optional: true },
+        id: { type: String, optional: true },
+        placeholder: { type: String, optional: true },
+        "*": true,
     };
 
     setup() {
@@ -29,7 +33,6 @@ export class TimePicker extends Component {
             this.timeInput.el.showPicker?.();
         }
     }
-
 }
 
 export const timePicker = {
